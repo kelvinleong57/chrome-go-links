@@ -27,6 +27,9 @@ function createCORSRequest(method, url) {
 
 // HTTP POST request
 function generate_post_request(key, tab_url, visuals) {
+	encoded_key = encodeURIComponent(key);
+	encoded_tab_url = encodeURIComponent(tab_url);
+
 	// set to true by default unless specified
 	if (typeof visuals === "undefined" || visuals === null) { 
 		visuals = true; 
@@ -37,7 +40,7 @@ function generate_post_request(key, tab_url, visuals) {
 
 	// POST request header and parameters
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	params = "key=" + key + "&url=" + tab_url;
+	params = "key=" + encoded_key + "&url=" + encoded_tab_url;
 
 	if (visuals) {
 		that = $(this);
