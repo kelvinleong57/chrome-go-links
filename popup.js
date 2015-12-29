@@ -22,12 +22,16 @@ $('#explore-page-btn').click(function(){
 });
 
 $('#add-page-btn').click(function(){
-	console.log("hi");
-	// chrome.tabs.getSelected(null,function(tab) {
-	// 	url = tab.url;
-	// 	key = tab.title;
-	// 	navigate(root_url + 'go/add_landing_page?url='+encodeURIComponent(url) + '&key='+encodeURIComponent(key));
-	// });
+	if ($('#add-input').val() != '') {
+		chrome.tabs.getSelected(null,function(tab) {
+			encoded_key = encodeURIComponent($('#add-input').val());
+			encoded_url = encodeURIComponent(tab.url);
+
+			generate_post_request(encoded_key, encoded_url);
+		});
+	} else {
+		alert('no key entered');
+	}
 });
 
 

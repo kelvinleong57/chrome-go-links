@@ -4,6 +4,9 @@
 	"name": "Go Links",
 	"description": "This extension allows user to search using shortcuts",
 	"version": "1.0",
+	"background": {
+		"scripts": ["js/jquery-2.0.3.min.js", "js/background.js"]
+	},
 	"omnibox": { "keyword" : "go" },
 	"browser_action": {
 		"default_icon": "icon.png",
