@@ -26,7 +26,7 @@ $('#add-page-btn').click(function(){
 	}
 });
 
-// CORS OBJECT
+// lookup algorithm
 
 function showSpinner(){
 	$('#loading-spinner').show();
@@ -58,9 +58,9 @@ function constructLookupList(results){
 	}
 	results_list = document.createElement('ul');
 	$(results_list).addClass('list-group');
-	for(var i=0;i<results.length;i++){
+	for(var i = 0; i < results.length; i++){
 		li = document.createElement('li');
-		$(li).text(results[i]);
+		$(li).text('golinks/go/' + results[i]);
 		$(li).addClass('list-group-item');
 		$(li).addClass('lookup-match');
 		$(results_list).append(li);
