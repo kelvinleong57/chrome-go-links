@@ -120,13 +120,13 @@ function lookupURL(url){
 // 	lookupURL(tab.url);
 // });
 
-function testme(key, tab_url) {
+function generate_post_request(key, tab_url) {
 	url = root_url + 'create_golink'
 	var xhr = createCORSRequest('POST', url);
 
 	// POST request header and parameters
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	params = "key=" + key + "&url=" + encodeURIComponent(tab_url);
+	params = "key=" + key + "&url=" + tab_url;
 	xhr.send(params);
 
 	that = $(this);
@@ -151,11 +151,10 @@ $('#add-input').keypress(function(e){
 		key = $(this).val();
 
 		chrome.tabs.getSelected(null,function(tab) {
-			url = encodeURIComponent(tab.url);
-			// navigate(root_url + 'create_golink?url='+url+'&key='+key);
+			encoded_key = encodeURIComponent(key);
+			encoded_url = encodeURIComponent(tab.url);
 
-			// post(url, key);
-			testme(key, url);
+			generate_post_request(encoded_key, encoded_url);
 		});
 		
 	}
