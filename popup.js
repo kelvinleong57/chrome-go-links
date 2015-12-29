@@ -1,10 +1,3 @@
-// var root_url = 'http://testing.berkeley-pbl.com/'
-var root_url = 'http://localhost:5000/'
-
-
-function navigate(url) {
-	chrome.windows.create({ url: url, type:'popup', height: 500, width:700 });
-}
 
 // function hitLandingPage(){
 // 	chrome.tabs.getSelected(null,function(tab) {
@@ -18,7 +11,7 @@ $('#landing-page-btn').click(function(){
 });
 
 $('#explore-page-btn').click(function(){
-	navigate(root_url + 'go');
+	navigate(root_url);
 });
 
 $('#add-page-btn').click(function(){
@@ -34,23 +27,7 @@ $('#add-page-btn').click(function(){
 	}
 });
 
-
-// Create the XHR object.
-function createCORSRequest(method, url) {
-	var xhr = new XMLHttpRequest();
-	if ("withCredentials" in xhr) {
-		// XHR for Chrome/Firefox/Opera/Safari.
-		xhr.open(method, url, true);
-	} else if (typeof XDomainRequest != "undefined") {
-		// XDomainRequest for IE.
-		xhr = new XDomainRequest();
-		xhr.open(method, url);
-	} else {
-		// CORS not supported.
-		xhr = null;
-	}
-	return xhr;
-}
+// CORS OBJECT
 
 function showSpinner(){
 	$('#loading-spinner').show();
@@ -123,31 +100,6 @@ function lookupURL(url){
 // chrome.tabs.getSelected(null,function(tab) {
 // 	lookupURL(tab.url);
 // });
-
-function generate_post_request(key, tab_url) {
-	url = root_url + 'create_golink'
-	var xhr = createCORSRequest('POST', url);
-
-	// POST request header and parameters
-	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	params = "key=" + key + "&url=" + tab_url;
-	xhr.send(params);
-
-	that = $(this);
-	showSpinner();
-
-	xhr.onload = function() {
-		hideSpinner();
-		var text = xhr.responseText;
-		constructLookupList(JSON.parse(text));
-	};
-
-	xhr.onerror = function() {
-		console.log('failed');
-	};
-
-	xhr.send();
-}
 
 
 $('#add-input').keypress(function(e){
