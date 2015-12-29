@@ -1,6 +1,6 @@
 # Chrome Go-Links Extension
 
-Accompanying Chrome extension application distributed to users to enable keyword-based bookmarking within the search bar. The description of the project is located in the G-Links back-end repository at https://github.com/kelvinleong57/go-links.
+Accompanying Chrome extension application distributed to users to enable keyword-based bookmarking within the search bar. The description of the project is located in the Go-Links back-end repo at https://github.com/kelvinleong57/go-links.
 
 ## Setting Up to Develop
 1. Clone this repo
